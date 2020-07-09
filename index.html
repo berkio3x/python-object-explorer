@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>python object explorer!</title>
+
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.0/milligram.css">
+<script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+
+<link rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.0.0/build/styles/default.min.css">
+<script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.0.0/build/highlight.min.js"></script>
+
+
+</head>
+<body>
+
+	<div class="container">
+
+  <div class="row">
+    <div class="column">
+	    <select id="ageRangeField" onchange="handleList(this)">
+	      <option value="1">Iterate over list</option>
+	      <option value="2">Iterate over list with index</option>
+	      <option value="3">Iterate with steps</option>
+	      <option value="4">24+</option>
+	    </select>
+    </div>
+    <div class="column">
+    	
+    <pre><code class= "language-python" id="typewriter"></code></pre>	
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+</body>
+</html>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/javascript">
+	//var typewriter = new Typewriter('#typewriter',{delay:1});
+
+	const ListMethods = {
+		ITERATE_OVER_LIST: '1',
+		ITERATE_OVER_LIST_WITH_INDEX: '2',
+		ITERATE_WITH_STEP: '3'
+
+	}
+
+
+	function handleList(select){
+		var option = select.value;
+
+var code_box = document.getElementById("typewriter")
+		switch(option){
+			
+			case ListMethods.ITERATE_OVER_LIST: {
+				var code = `
+colors = ['red', 'green', 'blue']
+for color in colors:             
+	print(color)                 
+				`
+		
+				
+				code_box.innerText = code
+
+				break;
+			}
+
+
+			case ListMethods.ITERATE_OVER_LIST_WITH_INDEX:{
+				var code = 	`
+colors = ['red', 'green', 'blue']
+for index, color in enumerate(colors):             
+	print(color, index)   
+
+				`
+				code_box.innerText = code
+				break;	
+			}
+
+			case ListMethods.ITERATE_WITH_STEP: {
+
+
+
+				var code = `
+var colors = ['red', 'green', 'blue']
+for i in range(0,len(colors)-1,2):
+	print(colors[i])
+
+`
+				code_box.innerText = code;
+				break;
+			}
+			
+				
+
+		}
+	}
+</script>
+<style type="text/css">
+	.code{
+		background-color: black;
+		width: 100%;
+		height: 400px;
+		color: white;
+	}
+	#typewriter{
+		padding-left: 40px;
+		font-family: monospace;
+	}
+</style>
